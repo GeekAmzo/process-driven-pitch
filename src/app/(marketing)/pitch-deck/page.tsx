@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Sparkles,
@@ -132,17 +133,45 @@ const businessModel = [
 ];
 
 const competitors = [
-  "Large consulting firms (expensive, slow)",
-  "Freelance consultants (limited scope)",
-  "Internal hires (costly, long ramp-up)",
+  "Odoo, Zoho One, HubSpot, Salesforce (broad suites, low process governance)",
+  "Monday.com, ClickUp, Asana, Notion (task tools, weak operating model)",
+  "Consulting firms and agencies (manual, slow, not productized)",
+  "Freelance implementers and integrators (inconsistent delivery)",
 ];
 
 const advantages = [
-  "Structured methodology",
-  "Fast deployment",
-  "Mid-market pricing",
-  "Practical implementation focus",
-  "Data-driven results",
+  "Process engine + approvals + audit trail built-in",
+  "AI PM orchestration with role-based agents",
+  "Fast setup via templates and onboarding wizard",
+  "Outcome-driven KPIs tied to delivery",
+  "Mid-market pricing with enterprise-grade governance",
+];
+
+const platformCompetitors = [
+  "Odoo",
+  "Zoho One",
+  "HubSpot",
+  "Salesforce",
+  "Monday.com",
+  "ClickUp",
+  "Asana",
+  "Notion",
+];
+
+const serviceProviders = [
+  "Large consulting firms",
+  "Boutique ops agencies",
+  "Freelance process consultants",
+  "System integrators",
+  "Fractional ops leaders",
+];
+
+const entryPoints = [
+  "Founder-led process audit + fast wins",
+  "Process template library per vertical",
+  "Unified inbox with approvals and SLA tracking",
+  "AI PM orchestration for delivery and escalation",
+  "Revenue ops automation tied to KPIs",
 ];
 
 const monthPlans = [
@@ -230,8 +259,15 @@ export default function PitchDeckPage() {
         <header className="relative z-10 border-b border-[#1c1b1a]/10 bg-white/60 backdrop-blur">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#1c1b1a] text-white font-semibold">
-                DP
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/80 p-1">
+                <Image
+                  src="/driven-processes-logo.png"
+                  alt="Driven Processes logo"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                  priority
+                />
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-[#7c6f68]">
@@ -252,6 +288,9 @@ export default function PitchDeckPage() {
                   {item.label}
                 </a>
               ))}
+              <Link href="/mou" className="transition hover:text-[#1c1b1a]">
+                MOU
+              </Link>
             </nav>
           </div>
         </header>
@@ -548,6 +587,57 @@ export default function PitchDeckPage() {
                     <div
                       key={item}
                       className="rounded-2xl border border-white/20 px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-6xl px-6 pb-16">
+            <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/70 p-8 shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                  Competitive Scan
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  We studied suites and service providers.
+                </h2>
+                <div className="mt-6 space-y-3 text-sm">
+                  {platformCompetitors.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl bg-[#f8f1ea] px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 space-y-3 text-sm">
+                  {serviceProviders.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-[#1c1b1a]/10 bg-white/80 px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-[#1c1b1a] p-8 text-white shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                  Why We Win
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  Process-first, governed, and agent-operated.
+                </h2>
+                <div className="mt-6 space-y-3 text-sm">
+                  {entryPoints.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/20 bg-white/10 px-4 py-3"
                     >
                       {item}
                     </div>

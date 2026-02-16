@@ -1,12 +1,23 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#f7f3ef] text-[#1c1b1a]">
       <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6 py-20">
-        <p className="text-xs uppercase tracking-[0.4em] text-[#9c8f86]">
-          Driven Processes
-        </p>
+        <div className="flex items-center gap-3">
+          <Image
+            src="/driven-processes-logo.png"
+            alt="Driven Processes logo"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
+            priority
+          />
+          <p className="text-xs uppercase tracking-[0.4em] text-[#9c8f86]">
+            Driven Processes
+          </p>
+        </div>
         <h1 className="text-4xl font-semibold">Pitch Materials</h1>
         <p className="text-sm text-[#3b3431]">
           Access the pitch deck, investor plan, business plan, and pitch advert.
@@ -23,6 +34,9 @@ export default function HomePage() {
           </Link>
           <Link href="/pitch-advert" className="text-[#1c1b1a] underline">
             Pitch Advert
+          </Link>
+          <Link href="/mou" className="text-[#1c1b1a] underline">
+            MOU
           </Link>
         </div>
       </div>

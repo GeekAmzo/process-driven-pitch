@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ShieldCheck,
@@ -135,8 +136,15 @@ export default function InvestorPlanPage() {
         <header className="relative z-10 border-b border-[#1c1b1a]/10 bg-white/60 backdrop-blur">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#1c1b1a] text-white font-semibold">
-                DP
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/80 p-1">
+                <Image
+                  src="/driven-processes-logo.png"
+                  alt="Driven Processes logo"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                  priority
+                />
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-[#7c6f68]">
@@ -156,6 +164,9 @@ export default function InvestorPlanPage() {
                 className="transition hover:text-[#1c1b1a]"
               >
                 Business Plan
+              </Link>
+              <Link href="/mou" className="transition hover:text-[#1c1b1a]">
+                MOU
               </Link>
             </div>
           </div>

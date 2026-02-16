@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import path from "path";
 import { readFile } from "fs/promises";
 import { Playfair_Display, Space_Grotesk } from "next/font/google";
@@ -11,6 +12,41 @@ const body = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-body",
 });
+
+const competitorSuites = [
+  "Odoo",
+  "Zoho One",
+  "HubSpot",
+  "Salesforce",
+  "Monday.com",
+  "ClickUp",
+  "Asana",
+  "Notion",
+];
+
+const serviceProviders = [
+  "Large consulting firms",
+  "Boutique ops agencies",
+  "Freelance process consultants",
+  "System integrators",
+  "Fractional ops leaders",
+];
+
+const differentiation = [
+  "Process engine with approvals, SLAs, and audit trails",
+  "AI PM orchestration tied to role-based execution",
+  "Fast setup via templates and onboarding wizard",
+  "Governance-first design with policy controls",
+  "Time-to-value under a day for core workflows",
+];
+
+const entryPoints = [
+  "Founder-led process audit + fast wins",
+  "Vertical process packs and templates",
+  "Unified inbox + approvals to reduce admin load",
+  "Revenue ops automation with measurable KPIs",
+  "Integration-first onboarding for SAP/commerce/email/WhatsApp",
+];
 
 type Block =
   | { type: "h1" | "h2" | "h3"; text: string }
@@ -144,8 +180,15 @@ export default async function BusinessPlanPage() {
         <header className="relative z-10 border-b border-[#1c1b1a]/10 bg-white/60 backdrop-blur">
           <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#1c1b1a] text-white font-semibold">
-                DP
+              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-white/80 p-1">
+                <Image
+                  src="/driven-processes-logo.png"
+                  alt="Driven Processes logo"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 object-contain"
+                  priority
+                />
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] text-[#7c6f68]">
@@ -156,12 +199,20 @@ export default async function BusinessPlanPage() {
                 </p>
               </div>
             </div>
-            <Link
-              href="/pitch-deck"
-              className="text-xs uppercase tracking-[0.3em] text-[#6f675f] transition hover:text-[#1c1b1a]"
-            >
-              View Pitch Deck
-            </Link>
+            <div className="flex flex-wrap items-center gap-4 text-xs uppercase tracking-[0.3em] text-[#6f675f]">
+              <Link href="/pitch-deck" className="transition hover:text-[#1c1b1a]">
+                Pitch Deck
+              </Link>
+              <Link
+                href="/investor-plan"
+                className="transition hover:text-[#1c1b1a]"
+              >
+                Investor Plan
+              </Link>
+              <Link href="/mou" className="transition hover:text-[#1c1b1a]">
+                MOU
+              </Link>
+            </div>
           </div>
         </header>
 
@@ -239,6 +290,62 @@ export default async function BusinessPlanPage() {
                       return null;
                   }
                 })}
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 pb-20">
+            <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                  Competitor Analysis
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  Suites, tools, and service providers reviewed.
+                </h2>
+                <div className="mt-6 space-y-3 text-sm">
+                  {competitorSuites.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl bg-[#f8f1ea] px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 space-y-3 text-sm">
+                  {serviceProviders.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-[#1c1b1a]/10 bg-white/80 px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-[#1c1b1a] p-8 text-white shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                  Why We Win
+                </p>
+                <div className="mt-6 space-y-3 text-sm">
+                  {differentiation.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 rounded-2xl border border-white/20 px-4 py-4 text-sm">
+                  Entry points to market:
+                  <div className="mt-3 space-y-2">
+                    {entryPoints.map((item) => (
+                      <div key={item}>{item}</div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
