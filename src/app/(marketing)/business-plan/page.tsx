@@ -95,11 +95,61 @@ const pricingBenchmarks = [
   },
 ];
 
-const ourPricing = [
-  { label: "Audit", value: "R5k–R15k" },
-  { label: "Implementation", value: "R15k–R75k" },
-  { label: "Retainer", value: "R3k–R10k / month" },
+const saasPricing = [
+  {
+    label: "Launch Plan",
+    price: "R999 / month",
+    tokens: "300,000 tokens included",
+    overage: "R100 per extra 100,000 tokens",
+    includes: [
+      "Startup wizard",
+      "Basic CRM",
+      "Project management",
+      "Process templates",
+      "Assistive AI agents (approval required)",
+    ],
+  },
+  {
+    label: "Growth Plan",
+    price: "R1,999 / month",
+    tokens: "1,000,000 tokens included",
+    overage: "R80 per extra 100,000 tokens",
+    includes: [
+      "Full CRM",
+      "Workflow automation",
+      "AI PM orchestration",
+      "Sales & marketing agents",
+      "Finance-lite (invoice drafting)",
+      "Unified inbox",
+    ],
+  },
+  {
+    label: "Autonomous Plan",
+    price: "R3,999 / month",
+    tokens: "3,000,000 tokens included",
+    overage: "R60 per extra 100,000 tokens",
+    includes: [
+      "Multi-department automation",
+      "Advanced KPI triggers",
+      "Agent-to-agent orchestration",
+      "Inventory-lite",
+      "Governance & approvals",
+    ],
+  },
 ];
+
+const enterprisePlan = {
+  label: "Enterprise Plan",
+  price: "Custom (R10k–R50k+ / month)",
+  includes: [
+    "Advanced ERP modules",
+    "Custom integrations",
+    "SLA & security controls",
+    "Dedicated AI configuration",
+    "Local or hybrid deployment options",
+    "Implementation + training team for full rollout",
+  ],
+};
 
 const forecastRows = [
   { month: "Month 1", mrr: "R10k–R20k", customers: "3–5" },
@@ -545,23 +595,43 @@ export default async function BusinessPlanPage() {
               </div>
               <div className="rounded-3xl border border-[#1c1b1a]/10 bg-[#1c1b1a] p-8 text-white shadow-xl">
                 <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
-                  Our Pricing
+                  SaaS Pricing
                 </p>
                 <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
-                  Service-driven pricing with clear ROI.
+                  Fixed tiers with AI token controls.
                 </h2>
-                <div className="mt-6 space-y-3 text-sm">
-                  {ourPricing.map((item) => (
+                <div className="mt-6 space-y-4 text-sm">
+                  {saasPricing.map((item) => (
                     <div
                       key={item.label}
-                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3"
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4"
                     >
-                      <span className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                      <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
                         {item.label}
-                      </span>
-                      <p className="mt-2 text-lg font-semibold">{item.value}</p>
+                      </p>
+                      <p className="mt-2 text-lg font-semibold">{item.price}</p>
+                      <p className="text-xs text-[#f3ede8]">{item.tokens}</p>
+                      <p className="text-xs text-[#f3ede8]">{item.overage}</p>
+                      <ul className="mt-3 space-y-1 text-xs text-[#f3ede8]">
+                        {item.includes.map((feature) => (
+                          <li key={feature}>{feature}</li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
+                  <div className="rounded-2xl border border-white/25 bg-white/15 px-4 py-4">
+                    <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                      {enterprisePlan.label}
+                    </p>
+                    <p className="mt-2 text-lg font-semibold">
+                      {enterprisePlan.price}
+                    </p>
+                    <ul className="mt-3 space-y-1 text-xs text-[#f3ede8]">
+                      {enterprisePlan.includes.map((feature) => (
+                        <li key={feature}>{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -603,8 +673,9 @@ export default async function BusinessPlanPage() {
                 </table>
               </div>
               <p className="mt-4 text-xs text-[#6f675f]">
-                Pricing anchors: Audit R5k–R15k, Implementation R15k–R75k,
-                Retainers R3k–R10k/month.
+                SaaS pricing assumes AI + infrastructure cost of ~R250/month per
+                business and targets 75–85% gross margin with token-based
+                overages.
               </p>
             </div>
           </section>
