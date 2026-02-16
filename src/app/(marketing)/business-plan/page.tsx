@@ -52,7 +52,8 @@ type Block =
   | { type: "h1" | "h2" | "h3"; text: string }
   | { type: "p"; text: string }
   | { type: "ul" | "ol"; items: string[] }
-  | { type: "hr" };
+  | { type: "hr" }
+  | { type: "table"; headers: string[]; rows: string[][] };
 
 function parseMarkdown(markdown: string): Block[] {
   const lines = markdown.split(/\r?\n/);
@@ -91,6 +92,29 @@ function parseMarkdown(markdown: string): Block[] {
       blocks.push({ type: "h1", text: trimmed.replace(/^#\s+/, "") });
       i += 1;
       continue;
+    }
+
+    if (trimmed.includes("|")) {
+      const next = (lines[i + 1] ?? "").trim();
+      if (/^\|?[-:\s|]+$/.test(next) && next.includes("|")) {
+        const toCells = (row: string) =>
+          row
+            .trim()
+            .replace(/^\|/, "")
+            .replace(/\|$/, "")
+            .split("|")
+            .map((cell) => cell.trim());
+
+        const headers = toCells(trimmed);
+        const rows: string[][] = [];
+        i += 2;
+        while (i < lines.length && lines[i].trim().includes("|")) {
+          rows.push(toCells(lines[i]));
+          i += 1;
+        }
+        blocks.push({ type: "table", headers, rows });
+        continue;
+      }
     }
 
     if (/^(\*|-)\s+/.test(trimmed)) {
@@ -279,6 +303,36 @@ export default async function BusinessPlanPage() {
                             </li>
                           ))}
                         </ol>
+                      );
+                    case "table":
+                      return (
+                        <div key={`table-${index}`} className="overflow-x-auto">
+                          <table className="w-full text-left text-sm">
+                            <thead>
+                              <tr className="border-b border-[#1c1b1a]/10 text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                                {block.headers.map((header) => (
+                                  <th key={header} className="py-3">
+                                    {renderInline(header)}
+                                  </th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {block.rows.map((row, rowIndex) => (
+                                <tr
+                                  key={`row-${rowIndex}`}
+                                  className="border-b border-[#1c1b1a]/10"
+                                >
+                                  {row.map((cell, cellIndex) => (
+                                    <td key={`cell-${rowIndex}-${cellIndex}`} className="py-3">
+                                      {renderInline(cell)}
+                                    </td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
                       );
                     case "p":
                       return (
