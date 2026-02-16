@@ -72,6 +72,44 @@ const ganttMilestones = [
   },
 ];
 
+const pricingBenchmarks = [
+  {
+    competitor: "Odoo / Zoho One",
+    pricing: "R600–R2,500/user/mo (typical bundles)",
+    gap: "Tools-first, weak governance + approvals",
+  },
+  {
+    competitor: "HubSpot / Salesforce",
+    pricing: "R1,500–R7,000/user/mo (mid-market tiers)",
+    gap: "CRM-first, heavy customization + slow ops rollout",
+  },
+  {
+    competitor: "Monday / ClickUp / Asana",
+    pricing: "R200–R900/user/mo (task suites)",
+    gap: "Task tracking without process engine or audit trail",
+  },
+  {
+    competitor: "Consulting / Agencies",
+    pricing: "R25k–R150k/project + retainers",
+    gap: "Manual delivery, not productized",
+  },
+];
+
+const ourPricing = [
+  { label: "Audit", value: "R5k–R15k" },
+  { label: "Implementation", value: "R15k–R75k" },
+  { label: "Retainer", value: "R3k–R10k / month" },
+];
+
+const forecastRows = [
+  { month: "Month 1", mrr: "R10k–R20k", customers: "3–5" },
+  { month: "Month 2", mrr: "R50k+", customers: "20+" },
+  { month: "Month 3", mrr: "R100k–R150k", customers: "50–75" },
+  { month: "Month 6", mrr: "R250k–R350k", customers: "120–180" },
+  { month: "Month 9", mrr: "R450k–R600k", customers: "220–300" },
+  { month: "Month 12", mrr: "R750k–R1.0M", customers: "350–450" },
+];
+
 type Block =
   | { type: "h1" | "h2" | "h3"; text: string }
   | { type: "p"; text: string }
@@ -469,6 +507,105 @@ export default async function BusinessPlanPage() {
                   </div>
                 ))}
               </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 pb-20">
+            <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                  Pricing Competitor Analysis
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  Market pricing vs our position.
+                </h2>
+                <div className="mt-6 overflow-x-auto">
+                  <table className="w-full text-left text-sm">
+                    <thead>
+                      <tr className="border-b border-[#1c1b1a]/10 text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                        <th className="py-3">Competitor</th>
+                        <th className="py-3">Pricing</th>
+                        <th className="py-3">Gap</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pricingBenchmarks.map((row) => (
+                        <tr
+                          key={row.competitor}
+                          className="border-b border-[#1c1b1a]/10"
+                        >
+                          <td className="py-3 font-medium">{row.competitor}</td>
+                          <td className="py-3">{row.pricing}</td>
+                          <td className="py-3 text-[#3b3431]">{row.gap}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-[#1c1b1a] p-8 text-white shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                  Our Pricing
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  Service-driven pricing with clear ROI.
+                </h2>
+                <div className="mt-6 space-y-3 text-sm">
+                  {ourPricing.map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3"
+                    >
+                      <span className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                        {item.label}
+                      </span>
+                      <p className="mt-2 text-lg font-semibold">{item.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 pb-20">
+            <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                Forecast
+              </p>
+              <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                Revenue outlook based on pricing points.
+              </h2>
+              <p className="mt-2 text-sm text-[#3b3431]">
+                Forecasts assume retainer-led revenue with implementation
+                projects in early months and continued growth via process packs.
+              </p>
+              <div className="mt-6 overflow-x-auto">
+                <table className="w-full text-left text-sm">
+                  <thead>
+                    <tr className="border-b border-[#1c1b1a]/10 text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      <th className="py-3">Month</th>
+                      <th className="py-3">Target MRR</th>
+                      <th className="py-3">Paying Customers</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {forecastRows.map((row) => (
+                      <tr
+                        key={row.month}
+                        className="border-b border-[#1c1b1a]/10"
+                      >
+                        <td className="py-3 font-medium">{row.month}</td>
+                        <td className="py-3">{row.mrr}</td>
+                        <td className="py-3">{row.customers}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p className="mt-4 text-xs text-[#6f675f]">
+                Pricing anchors: Audit R5k–R15k, Implementation R15k–R75k,
+                Retainers R3k–R10k/month.
+              </p>
             </div>
           </section>
         </main>
