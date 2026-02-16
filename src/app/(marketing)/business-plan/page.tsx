@@ -170,81 +170,74 @@ export default async function BusinessPlanPage() {
             <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl backdrop-blur">
               <div className="space-y-6">
                 {blocks.map((block, index) => {
-                  if (block.type === "hr") {
-                    return (
-                      <hr
-                        key={`hr-${index}`}
-                        className="border-[#1c1b1a]/10"
-                      />
-                    );
+                  switch (block.type) {
+                    case "hr":
+                      return (
+                        <hr
+                          key={`hr-${index}`}
+                          className="border-[#1c1b1a]/10"
+                        />
+                      );
+                    case "h1":
+                      return (
+                        <h1
+                          key={`h1-${index}`}
+                          className="font-[family-name:var(--font-display)] text-3xl"
+                        >
+                          {renderInline(block.text)}
+                        </h1>
+                      );
+                    case "h2":
+                      return (
+                        <h2
+                          key={`h2-${index}`}
+                          className="font-[family-name:var(--font-display)] text-2xl"
+                        >
+                          {renderInline(block.text)}
+                        </h2>
+                      );
+                    case "h3":
+                      return (
+                        <h3
+                          key={`h3-${index}`}
+                          className="text-lg font-semibold uppercase tracking-[0.2em] text-[#7c6f68]"
+                        >
+                          {renderInline(block.text)}
+                        </h3>
+                      );
+                    case "ul":
+                      return (
+                        <ul key={`ul-${index}`} className="space-y-2 text-sm">
+                          {block.items.map((item, itemIndex) => (
+                            <li key={`ul-${index}-${itemIndex}`}>
+                              <span className="mr-2 text-[#7c6f68]">•</span>
+                              {renderInline(item)}
+                            </li>
+                          ))}
+                        </ul>
+                      );
+                    case "ol":
+                      return (
+                        <ol key={`ol-${index}`} className="space-y-2 text-sm">
+                          {block.items.map((item, itemIndex) => (
+                            <li key={`ol-${index}-${itemIndex}`}>
+                              <span className="mr-2 text-[#7c6f68]">
+                                {itemIndex + 1}.
+                              </span>
+                              {renderInline(item)}
+                            </li>
+                          ))}
+                        </ol>
+                      );
+                    case "p":
+                      return (
+                        <p key={`p-${index}`} className="text-sm text-[#3b3431]">
+                          {renderInline(block.text)}
+                        </p>
+                      );
+                    default:
+                      return null;
                   }
-
-                  if (block.type === "h1") {
-                    return (
-                      <h1
-                        key={`h1-${index}`}
-                        className="font-[family-name:var(--font-display)] text-3xl"
-                      >
-                        {renderInline(block.text)}
-                      </h1>
-                    );
-                  }
-
-                  if (block.type === "h2") {
-                    return (
-                      <h2
-                        key={`h2-${index}`}
-                        className="font-[family-name:var(--font-display)] text-2xl"
-                      >
-                        {renderInline(block.text)}
-                      </h2>
-                    );
-                  }
-
-                  if (block.type === "h3") {
-                    return (
-                      <h3
-                        key={`h3-${index}`}
-                        className="text-lg font-semibold uppercase tracking-[0.2em] text-[#7c6f68]"
-                      >
-                        {renderInline(block.text)}
-                      </h3>
-                    );
-                  }
-
-                  if (block.type === "ul") {
-                    return (
-                      <ul key={`ul-${index}`} className="space-y-2 text-sm">
-                        {block.items.map((item, itemIndex) => (
-                          <li key={`ul-${index}-${itemIndex}`}>
-                            <span className="mr-2 text-[#7c6f68]">•</span>
-                            {renderInline(item)}
-                          </li>
-                        ))}
-                      </ul>
-                    );
-                  }
-
-                  if (block.type === "ol") {
-                    return (
-                      <ol key={`ol-${index}`} className="space-y-2 text-sm">
-                        {block.items.map((item, itemIndex) => (
-                          <li key={`ol-${index}-${itemIndex}`}>
-                            <span className="mr-2 text-[#7c6f68]">
-                              {itemIndex + 1}.
-                            </span>
-                            {renderInline(item)}
-                          </li>
-                        ))}
-                      </ol>
-                    );
-                  }
-
-                  return (
-                    <p key={`p-${index}`} className="text-sm text-[#3b3431]">
-                      {renderInline(block.text)}
-                    </p>
-                  );
                 })}
               </div>
             </div>
