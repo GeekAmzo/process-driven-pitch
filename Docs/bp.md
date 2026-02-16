@@ -361,21 +361,13 @@ Total: R450,000
 
 # Critical Strategic Move
 
-Choose one vertical now.
+Choose one primary vertical for the first 90 days and execute deeply.
 
-Example:
+Recommended starting focus:
 
 * Agencies
 * Digital marketing firms
 * Consulting firms
 * E-commerce stores
 
-Trying to serve everyone kills Month 2 traction.
-
----
-
-If you want, next I can:
-
-* Build a realistic Month 2 traction acquisition model
-* Create a founder-led outbound sales plan
-* Or stress-test whether 20 paying clients in 60 days is realistic and how to hit it.
+Reason: early traction requires repeatable delivery, fast case studies, and tighter messaging. Going too broad slows Month 2 revenue proof.
