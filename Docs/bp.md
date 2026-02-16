@@ -172,43 +172,7 @@ This covers:
 
 ---
 
-# OPTIONAL ADDITION: BONUS TRIGGER
-
-To increase confidence:
-
-Add bonus milestone:
-
-If Month 3 MRR exceeds R100,000:
-
-Additional R50,000 performance bonus.
-
-Shows belief in traction.
-
 ---
-
-# STRATEGIC NOTE
-
-The strongest leverage point in this plan is:
-
-Month 2 traction proof.
-
-Investors invest in traction more than code.
-
----
-
-If useful next, I can provide:
-
-* A formal investor milestone agreement draft structure
-* KPI dashboard template
-* Risk-adjusted fallback clause structure
-* Or a legally clean milestone contract framework
-
-
-Good. If traction must start by **Month 2**, the structure shifts from “build → test → monetize” to:
-
-**Build while selling.**
-
-Below is the updated milestone-based payout + KPI structure aligned to **traction by Month 2**.
 
 ---
 
