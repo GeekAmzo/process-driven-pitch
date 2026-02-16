@@ -160,6 +160,19 @@ const forecastRows = [
   { month: "Month 12", mrr: "R750k–R1.0M", customers: "350–450" },
 ];
 
+const seriesAPlan = {
+  valuation: "R20,000,000",
+  equity: "10%",
+  raise: "R2,000,000",
+  timing: "End of Month 3 (full launch)",
+  useOfFunds: [
+    "Launch across Africa (country-by-country expansion)",
+    "Scale onboarding and implementation capacity",
+    "Strengthen integrations and enterprise readiness",
+    "Build regional partnerships and distribution",
+  ],
+};
+
 type Block =
   | { type: "h1" | "h2" | "h3"; text: string }
   | { type: "p"; text: string }
@@ -677,6 +690,64 @@ export default async function BusinessPlanPage() {
                 business and targets 75–85% gross margin with token-based
                 overages.
               </p>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 pb-20">
+            <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                  Series A Target
+                </p>
+                <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                  Raise for Africa expansion after Month 3 launch.
+                </h2>
+                <div className="mt-6 grid gap-3 text-sm">
+                  <div className="rounded-2xl bg-[#f8f1ea] px-4 py-3">
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      Valuation
+                    </span>
+                    <p className="mt-2 font-semibold">{seriesAPlan.valuation}</p>
+                  </div>
+                  <div className="rounded-2xl bg-[#f8f1ea] px-4 py-3">
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      Equity Offered
+                    </span>
+                    <p className="mt-2 font-semibold">{seriesAPlan.equity}</p>
+                  </div>
+                  <div className="rounded-2xl bg-[#f8f1ea] px-4 py-3">
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      Target Raise
+                    </span>
+                    <p className="mt-2 font-semibold">{seriesAPlan.raise}</p>
+                  </div>
+                  <div className="rounded-2xl border border-[#1c1b1a]/10 bg-white/80 px-4 py-3">
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      Timing
+                    </span>
+                    <p className="mt-2">{seriesAPlan.timing}</p>
+                  </div>
+                </div>
+              </div>
+              <div className="rounded-3xl border border-[#1c1b1a]/10 bg-[#1c1b1a] p-8 text-white shadow-xl">
+                <p className="text-xs uppercase tracking-[0.3em] text-[#f5e7dd]">
+                  Use of Funds
+                </p>
+                <div className="mt-6 space-y-3 text-sm">
+                  {seriesAPlan.useOfFunds.map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/15 bg-white/10 px-4 py-3"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 rounded-2xl border border-white/20 px-4 py-4 text-sm">
+                  Calculation: {seriesAPlan.valuation} valuation × {seriesAPlan.equity} =
+                  {seriesAPlan.raise} raise.
+                </div>
+              </div>
             </div>
           </section>
         </main>
