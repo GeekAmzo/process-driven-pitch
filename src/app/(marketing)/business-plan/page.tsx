@@ -48,6 +48,30 @@ const entryPoints = [
   "Integration-first onboarding for SAP/commerce/email/WhatsApp",
 ];
 
+const ganttMilestones = [
+  {
+    label: "Month 1",
+    title: "Core Engine + Sales Pipeline Activated",
+    kpis: "MVP live, 3 paying customers, 100 AI actions",
+    start: 0,
+    duration: 4,
+  },
+  {
+    label: "Month 2",
+    title: "Revenue Traction Milestone",
+    kpis: "20 paying businesses or R50k MRR, retention > 85%",
+    start: 4,
+    duration: 4,
+  },
+  {
+    label: "Month 3",
+    title: "Scale & Fundraise Readiness",
+    kpis: "50–75 paying businesses, R100k–R150k MRR, churn < 10%",
+    start: 8,
+    duration: 4,
+  },
+];
+
 type Block =
   | { type: "h1" | "h2" | "h3"; text: string }
   | { type: "p"; text: string }
@@ -400,6 +424,50 @@ export default async function BusinessPlanPage() {
                     ))}
                   </div>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="mx-auto max-w-5xl px-6 pb-20">
+            <div className="rounded-3xl border border-[#1c1b1a]/10 bg-white/75 p-8 shadow-xl">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                Build Gantt
+              </p>
+              <h2 className="mt-4 font-[family-name:var(--font-display)] text-3xl">
+                90-day build timeline with milestones and KPIs.
+              </h2>
+              <div className="mt-6 space-y-4">
+                <div className="grid grid-cols-[80px_1fr] gap-4 text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                  <span>Month</span>
+                  <div className="grid grid-cols-12 gap-1 text-center">
+                    <span className="col-span-4">Weeks 1–4</span>
+                    <span className="col-span-4">Weeks 5–8</span>
+                    <span className="col-span-4">Weeks 9–12</span>
+                  </div>
+                </div>
+                {ganttMilestones.map((milestone) => (
+                  <div key={milestone.label} className="grid grid-cols-[80px_1fr] gap-4">
+                    <div className="text-xs uppercase tracking-[0.3em] text-[#9c8f86]">
+                      {milestone.label}
+                    </div>
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-12 gap-1">
+                        <div
+                          className="col-span-12 h-3 rounded-full bg-[#f1e9e2]"
+                          style={{
+                            gridColumn: `${milestone.start + 1} / span ${milestone.duration}`,
+                          }}
+                        >
+                          <div className="h-3 w-full rounded-full bg-[#1c1b1a]" />
+                        </div>
+                      </div>
+                      <div className="rounded-2xl bg-[#f8f1ea] px-4 py-3 text-sm">
+                        <p className="font-semibold">{milestone.title}</p>
+                        <p className="text-[#6f675f]">KPI: {milestone.kpis}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
